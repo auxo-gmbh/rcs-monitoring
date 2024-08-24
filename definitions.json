@@ -1,0 +1,57 @@
+{
+  "rabbit_version": "3.11.7 ",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "iy18Orx9MGsSC2Q3IAtjkoJ2KcpEiI52WybKTMOyyU5BHd6Q",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name":"/"
+    }
+  ],
+  "permissions": [
+    {
+      "user":"guest",
+      "vhost":"/",
+      "configure":".*",
+      "write":".*",
+      "read":".*"
+    }
+  ],
+  "parameters": [],
+  "policies": [],
+  "queues": [
+    {
+      "name": "monitoring-queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "monitoring-exchange",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source":"monitoring-exchange",
+      "vhost":"/",
+      "destination":"monitoring-queue",
+      "destination_type":"queue",
+      "routing_key":"",
+      "arguments":{}
+    }
+  ]
+}

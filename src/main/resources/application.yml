@@ -1,0 +1,15 @@
+spring:
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: password
+  rabbitmq:
+    listener:
+      direct:
+        consumers-per-queue: 1
+      simple:
+        prefetch: 2000
+    template:
+      default-receive-queue: monitoring-queue
+      exchange: monitoring-exchange
